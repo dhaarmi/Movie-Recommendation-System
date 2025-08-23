@@ -1,11 +1,16 @@
 # recommender.py
+# ...existing code...
+import os
+
+import os
 import pandas as pd
 import ast
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Load dataset
-movies = pd.read_csv("tmdb_5000_movies.csv")
+# Load dataset with absolute path
+csv_path = os.path.join(os.path.dirname(__file__), "tmdb_5000_movies.csv")
+movies = pd.read_csv(csv_path)
 movies['overview'] = movies['overview'].fillna('')
 
 # Helper function to parse JSON-like columns
