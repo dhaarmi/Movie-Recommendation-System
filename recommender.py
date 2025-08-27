@@ -2,15 +2,19 @@
 # ...existing code...
 import os
 
+
 import os
 import pandas as pd
 import ast
+import sqlite3
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Load dataset with absolute path
-csv_path = os.path.join(os.path.dirname(__file__), "tmdb_5000_movies.csv")
-movies = pd.read_csv(csv_path)
+# Load dataset from SQLite
+db_path = os.path.join(os.path.dirname(__file__), "movies.db")
+conn = sqlite3.connect(db_path)
+movies = pd.read_sql_query("SELECT * FROM movies", conn)
+conn.close()
 movies['overview'] = movies['overview'].fillna('')
 
 # Helper function to parse JSON-like columns
