@@ -37,5 +37,3 @@ These features are vectorized and compared to suggest the closest matches.
 • HTML, Bootstrap, CSS  
 • Pandas, scikit-learn (for data handling and similarity calculations)  
 
-   git clone <repo_url>
-   cd movie-recommender
